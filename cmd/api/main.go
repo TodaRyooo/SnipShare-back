@@ -60,9 +60,6 @@ func main() {
 	mux.HandleFunc("GET /posts", postPresenter.GetPosts)          // 全投稿取得
 	mux.HandleFunc("POST /posts", postPresenter.CreatePost)       // 新規投稿作成
 	// 必要に応じて、以下のパスも追加できます
-	// mux.HandleFunc("GET /posts/{id}", postPresenter.GetPostByID)
-	// mux.HandleFunc("PUT /posts/{id}", postPresenter.UpdatePost)
-	// mux.HandleFunc("DELETE /posts/{id}", postPresenter.DeletePost)
 
 	// --- 4. HTTPサーバーの起動 ---
 	port := ":8080"
