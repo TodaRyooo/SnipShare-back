@@ -20,3 +20,7 @@ func (uc *SnippetUsecase) GetAllSnippets() ([]domain.Snippet, error) {
 	}
 	return snippets, nil
 }
+
+func (uc *SnippetUsecase) CreateSnippet(snippet *domain.Snippet) error {
+	return uc.repo.Save(snippet)
+}
