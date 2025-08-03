@@ -17,5 +17,5 @@ type Snippet struct {
 
 type SnippetRepository interface {
 	FindAll() ([]Snippet, error)
-	// Save(snippet Snippet) (int, error) // 新しい投稿を保存し、そのIDを返す
+	Save(snippet *Snippet) error // 新しい投稿を保存し、そのIDを返す
 }

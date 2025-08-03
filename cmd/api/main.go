@@ -38,6 +38,10 @@ func main() {
 	snippetUsecase := usecase.NewSnippetUsecase(snippetRepo)
 	snippetPresenter := presenter.NewSnippetPresenter(snippetUsecase)
 
+	var commentRepo domain.CommentRepository = mysql.NewCommentRepository(mysqlClient)
+	commentUsecase := usecase.NewCommentUsecase(commentRepo)
+	commentPresenter := presenter.NewCommentPresenter(commentUsecase)
+
 	// --- 3. ルーティングの設定 ---
 	// Goの標準ルーター (http.ServeMux) を使用
 	mux := http.NewServeMux()
@@ -45,6 +49,7 @@ func main() {
 	// 各HTTPメソッドとパスに対するハンドラ関数を登録
 	// presenter層のメソッドを直接登録
 	mux.HandleFunc("GET /snippets", snippetPresenter.GetSnippets) // 全スニペット取得
+	mux.HandleFunc("GET /comments", commentPresenter.GetComments) // 全コメント取得
 
 	// --- 4. HTTPサーバーの起動 ---
 	port := ":8080"
